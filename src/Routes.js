@@ -10,19 +10,28 @@ function Routes() {
   const [bingoCard, setBingoCard] = useState(BINGO_CARD);
 
   useEffect(() => {
-    let card = localStorage.getItem('bingoCard');
-    if (card) setBingoCard(card);
+    let cardJSON = localStorage.getItem('bingoCard');
+    if (cardJSON) {
+      let card = JSON.parse(cardJSON);
+      setBingoCard(card);
+    }
   }, [])
+
+  const updateCard = (cardInfo) => {
+    let updatedCard = JSON.stringify(cardInfo)
+    localStorage.setItem('bingoCard', updatedCard)
+    setBingoCard(bingoCard => cardInfo)
+  }
 
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Grid card={bingoCard} update={setBingoCard} />
+          <Grid card={bingoCard} />
         </Route>
         <Route exact path="/challenge/:id">
-          <ChallengeDetail card={bingoCard} />
+          <ChallengeDetail card={bingoCard} update={updateCard} />
         </Route>
         <Redirect to="/" />
       </Switch>
