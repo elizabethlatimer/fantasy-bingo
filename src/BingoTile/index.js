@@ -2,6 +2,8 @@ import React from 'react';
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+import './BingoTile.scss';
+
 function BingoTile({ challenge, id }) {
 
   let mode = challenge.difficulty;
@@ -17,12 +19,18 @@ function BingoTile({ challenge, id }) {
   }
 
   return (
-    <Card className="col-md-2 col-lg-2 col-xl-2 py-2"
+    <Card
       bg={bgColor}
-      text="light">
-      <Card.Title>{challenge.title}</Card.Title>
-      <Card.Text>{`${challenge.status} ${mode === 'hard' && challenge.status !== "Not Started" ? ' - HARD MODE': ''}`}</Card.Text>
-      <Link to={`/challenge/${id}`} className="btn btn-sm btn-secondary"> Update progress</Link>
+      text="light"
+      className="BingoTile">
+      <Card.Body>
+        <Card.Title className="BingoTitle">{challenge.title}</Card.Title>
+        <Card.Text className="BingoStatus">{`${challenge.status} ${mode === 'hard' && challenge.status !== "Not Started" ? ' - HARD MODE' : ''}`}</Card.Text>
+
+      </Card.Body>
+      <Card.Footer>
+        <Link to={`/challenge/${id}`} className="btn btn-sm btn-secondary gridButton"> Update progress</Link>
+      </Card.Footer>
     </Card>
   )
 }

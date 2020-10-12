@@ -4,14 +4,13 @@ import { Button, Form, Alert } from 'react-bootstrap';
 import AddStoryForm from '../AddStoryForm';
 import StoryInfo from '../StoryInfo';
 
-const INITIAL_STATE = {
-  "difficulty": "Normal",
-  "status": "Not Started"
-}
 
 function ChallengeDetail({ card, update }) {
   let { id } = useParams();
-  const [formData, setFormData] = useState(INITIAL_STATE);
+  const [formData, setFormData] = useState({
+    "difficulty": card[id].difficulty,
+    "status": card[id].status
+  });
   const [showAlert, setShowAlert] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
