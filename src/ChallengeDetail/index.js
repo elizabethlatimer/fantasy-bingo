@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom'
-import { Button, Form, Alert } from 'react-bootstrap'
+import { useParams, Link } from 'react-router-dom';
+import { Button, Form, Alert } from 'react-bootstrap';
+import AddStoryForm from '../AddStoryForm';
+import StoryInfo from '../StoryInfo';
 
 const INITIAL_STATE = {
   "difficulty": "Normal",
@@ -11,6 +13,7 @@ function ChallengeDetail({ card, update }) {
   let { id } = useParams();
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [showAlert, setShowAlert] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -26,6 +29,10 @@ function ChallengeDetail({ card, update }) {
     newCard[id].status = formData.status;
     update(newCard)
     setShowAlert(true);
+  }
+
+  const toggleForm = () => {
+    setShowForm(showForm => !showForm)
   }
 
   return (
@@ -53,7 +60,15 @@ function ChallengeDetail({ card, update }) {
         </Form.Group>
         <Button size='sm' onClick={handleSubmit}>Update Progress</Button>
       </Form>
-      <Button size='sm'>Add a Book/Story</Button>
+
+      {card[id].stories.length
+        ? card[id].stories.map(story => <StoryInfo story={story} key={story.title} />)
+        : <p>You haven't recorded a title for this challenge yet.</p>}
+
+      {showForm
+        ? <AddStoryForm card={card} update={update} id={id} toggle={toggleForm} />
+        : <Button size='sm' onClick={toggleForm}>Add a Book/Story</Button>}
+
       <Link to='/' className='btn btn-sm btn-secondary'>Back to Bingo Grid</Link>
     </>
   )
