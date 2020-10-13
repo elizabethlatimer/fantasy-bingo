@@ -1,0 +1,30 @@
+@import "../shared/styles/styles.scss";
+
+.Footer {
+    background-color: $dark;
+    color: $light;
+    padding: .75rem;
+    margin-top: .75rem;
+
+    .FooterContent {
+        margin: auto;
+        width: 75%;
+        p {
+            margin:0;
+        }
+        .FooterLinks {
+            margin: .5rem 0;
+            a {
+                &:link, &:visited {
+                    color: $info;
+                }
+                &:hover {
+                    color: $success;
+                    text-decoration: none;
+                }
+
+            }
+        }
+
+    }
+}

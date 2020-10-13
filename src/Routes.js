@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { BINGO_CARD } from './BlankBingoState';
 import Grid from './Grid';
 import ChallengeDetail from './ChallengeDetail';
+import Footer from './Footer'
 
 
 function Routes() {
@@ -23,18 +24,24 @@ function Routes() {
     setBingoCard(bingoCard => cardInfo)
   }
 
+  const resetCard = () => {
+    localStorage.removeItem('bingoCard');
+    setBingoCard(bingoCard => BINGO_CARD);
+  }
+
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Grid card={bingoCard} />
+          <Grid card={bingoCard} reset={resetCard}/>
         </Route>
         <Route exact path="/challenge/:id">
           <ChallengeDetail card={bingoCard} update={updateCard} />
         </Route>
         <Redirect to="/" />
       </Switch>
+      <Footer />
     </BrowserRouter>
   )
 }
