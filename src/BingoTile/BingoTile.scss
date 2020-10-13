@@ -3,9 +3,15 @@
     @media (min-width: 576px) {
         font-size: 1.85vw;
     }
+    @media (min-width: 1200px) {
+        font-size: 1rem;
+    }
 }
 .gridButton{
     @media (min-width: 576px){
         font-size: 1.3vw;
+    }
+    @media (min-width: 1200px) {
+        font-size: .75rem;
     }
 }

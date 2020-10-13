@@ -88,7 +88,12 @@ function ChallengeDetail({ card, update }) {
 
         {showForm
           ? <AddStoryForm card={card} update={update} id={id} toggle={toggleForm} />
-          : <div>{!Object.keys(card[id].stories).length ? <p>You haven't recorded a title for this challenge yet.</p> : null}<Button size='sm' onClick={toggleForm}>Add a Book/Story</Button></div>}
+          : <div>
+            {!Object.keys(card[id].stories).length
+            ? <p>You haven't recorded a title for this challenge yet.</p>
+            : null}
+            <Button size='sm' onClick={toggleForm}>Add a Book/Story</Button>
+            </div>}
       </div>
 
       <Link to='/' className='btn btn-sm btn-secondary'>Back to Bingo Grid</Link>

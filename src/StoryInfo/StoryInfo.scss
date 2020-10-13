@@ -3,6 +3,7 @@
 .StoryInfoCard {
     background-color: $info;
     width: 75%;
+    max-width: 600px;
     padding: 25px;
     margin: 10px auto;
     p {
@@ -19,4 +20,8 @@
         font-weight: bold;
 
     }
+}
+
+.StoryInfoEdit {
+    margin-bottom: .5rem;
 }

@@ -6,7 +6,15 @@ import './StoryInfo.scss';
 function StoryInfo({ card, id, update, story, deleteStory }) {
   const [edit, setEdit] = useState(false);
   if (edit) {
-    return <AddStoryForm card={card} update={update} id={id} toggle={() => setEdit(false)} story={story} />
+    return (<div className="StoryInfoEdit">
+    <AddStoryForm
+      card={card}
+      update={update}
+      id={id}
+      toggle={() => setEdit(false)}
+      story={story}
+      />
+      </div>)
   }
 
   return (
