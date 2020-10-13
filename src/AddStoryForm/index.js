@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, ButtonGroup } from 'react-bootstrap';
 import '../ChallengeDetail/ChallengeDetail.scss'
 
 const INITIAL_STATE = {
@@ -11,8 +11,8 @@ const INITIAL_STATE = {
   "mode": "Normal"
 }
 
-function AddStoryForm({ card, update, id, toggle }) {
-  const [formData, setFormData] = useState(INITIAL_STATE);
+function AddStoryForm({ card, update, id, toggle, story }) {
+  const [formData, setFormData] = useState(story || INITIAL_STATE);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -24,7 +24,8 @@ function AddStoryForm({ card, update, id, toggle }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     let newCard = { ...card };
-    newCard[id].stories.push(formData);
+    newCard[id].stories[formData.title] = formData;
+    if (formData.title !== story.title) delete newCard[id].stories[story.title];
     update(newCard)
     toggle();
   }
@@ -32,7 +33,7 @@ function AddStoryForm({ card, update, id, toggle }) {
   return (
     <Form className="ChallengeDetailForm" onSubmit={handleSubmit}>
       <div className="FormHeader">
-        <h2>New Story</h2>
+        <h2>{story ? 'Edit' : 'New'} Story</h2>
       </div>
       <Form.Group controlId="Title">
         <Form.Label>Title:</Form.Label>
@@ -61,8 +62,12 @@ function AddStoryForm({ card, update, id, toggle }) {
           <option>Hard</option>
         </Form.Control>
       </Form.Group>
-      <Button size='sm' onClick={handleSubmit}>Add Story</Button>
-      <Button size='sm' variant='secondary' onClick={() => toggle()}>Cancel</Button>
+      <div className="button">
+        <ButtonGroup>
+          <Button size='sm' variant='secondary' onClick={() => toggle()}>Cancel</Button>
+          <Button size='sm' onClick={handleSubmit}>{story ? 'Edit' : 'Add'} Story</Button>
+        </ButtonGroup>
+      </div>
     </Form>
   )
 }

@@ -14,6 +14,7 @@ function ChallengeDetail({ card, update }) {
   });
   const [showAlert, setShowAlert] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const storyList = card[id].stories
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -31,6 +32,12 @@ function ChallengeDetail({ card, update }) {
     setShowAlert(true);
   }
 
+  const handleDelete = (title) => {
+    let newCard = { ...card };
+    delete newCard[id].stories[title];
+    update(newCard);
+  }
+
   const toggleForm = () => {
     setShowForm(showForm => !showForm)
   }
@@ -41,7 +48,7 @@ function ChallengeDetail({ card, update }) {
         <h1>{card[id].title}</h1>
         <div>{card[id].description}</div>
       </div>
-      {showAlert ? <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+      {showAlert ? <Alert variant="primary" onClose={() => setShowAlert(false)} dismissible>
         You have successfully updated your progress on this challenge!
       </Alert> : null}
       <Form className="ChallengeDetailForm" onSubmit={handleSubmit}>
@@ -63,17 +70,25 @@ function ChallengeDetail({ card, update }) {
             <option>Completed</option>
           </Form.Control>
         </Form.Group>
-        <Button size='sm' onClick={handleSubmit}>Update Progress</Button>
+        <div className="button">
+          <Button size='sm' onClick={handleSubmit}>Update Progress</Button>
+        </div>
       </Form>
       <div className="ChallengeDetailTitles">
         <h2>Your Choices for this Square</h2>
-        {card[id].stories.length
-          ? card[id].stories.map(story => <StoryInfo story={story} key={story.title} />)
+        {Object.keys(storyList).length
+          ? Object.keys(storyList).map(title => <StoryInfo
+            card={card}
+            id={id}
+            update={update}
+            story={storyList[title]}
+            key={storyList[title].title}
+            deleteStory={handleDelete} />)
           : null}
 
         {showForm
           ? <AddStoryForm card={card} update={update} id={id} toggle={toggleForm} />
-          : <div>{!card[id].stories.length ?<p>You haven't recorded a title for this challenge yet.</p> : null}<Button size='sm' onClick={toggleForm}>Add a Book/Story</Button></div>}
+          : <div>{!Object.keys(card[id].stories).length ? <p>You haven't recorded a title for this challenge yet.</p> : null}<Button size='sm' onClick={toggleForm}>Add a Book/Story</Button></div>}
       </div>
 
       <Link to='/' className='btn btn-sm btn-secondary'>Back to Bingo Grid</Link>
