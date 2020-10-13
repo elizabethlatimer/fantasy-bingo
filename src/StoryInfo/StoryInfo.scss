@@ -8,4 +8,11 @@
     p {
         margin-bottom: 0;
     }
+    .buttons {
+        @media (min-width: 576px) {
+            bottom: 0.4rem;
+            right: 0.4rem;
+            position: absolute;
+        }
+    }
 }

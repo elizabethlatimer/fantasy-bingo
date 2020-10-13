@@ -6,6 +6,7 @@ function Footer() {
     <div className="Footer">
       <div className="FooterContent text-light">
         <p>Created by Elizabeth Latimer.</p>
+        <p>I'm looking for work.</p>
         <p>Are you looking to hire a hard-working, passionate Jr. Dev? Please reach out!</p>
         <div className="FooterLinks">
           <a href="https://elizabethlatimer.dev">website</a> |{' '}

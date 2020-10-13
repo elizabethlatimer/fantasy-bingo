@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button, ButtonGroup } from 'react-bootstrap';
+import './WarningModal.scss';
 
 function WarningModal({ show, onHide, title, message, confirm }) {
   return (
@@ -9,6 +10,7 @@ function WarningModal({ show, onHide, title, message, confirm }) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      className="WarningModal"
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
