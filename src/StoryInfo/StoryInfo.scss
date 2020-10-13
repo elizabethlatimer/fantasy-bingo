@@ -1,0 +1,11 @@
+@import "../shared/styles/styles.scss";
+
+.StoryInfoCard {
+    background-color: $info;
+    width: 75%;
+    padding: 25px;
+    margin: 10px auto;
+    p {
+        margin-bottom: 0;
+    }
+}

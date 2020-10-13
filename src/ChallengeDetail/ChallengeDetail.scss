@@ -1,0 +1,28 @@
+@import "../shared/styles/styles.scss";
+
+.ChallengeDetailHeader {
+    width: 90%;
+    margin: 15px auto;
+}
+
+.ChallengeDetailForm {
+    width: 75%;
+    margin: auto;
+    padding: 25px;
+    background-color: $success;
+    border-radius: 3px;
+    text-align: left;
+    .FormHeader {
+        text-align: center;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    .btn {
+        margin-right:0px;
+    }
+}
+
+.ChallengeDetailTitles {
+    padding: 25px;
+}

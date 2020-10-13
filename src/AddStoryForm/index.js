@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import '../ChallengeDetail/ChallengeDetail.scss'
 
 const INITIAL_STATE = {
   "title": "",
@@ -29,7 +30,10 @@ function AddStoryForm({ card, update, id, toggle }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="ChallengeDetailForm" onSubmit={handleSubmit}>
+      <div className="FormHeader">
+        <h2>New Story</h2>
+      </div>
       <Form.Group controlId="Title">
         <Form.Label>Title:</Form.Label>
         <Form.Control type="text" size="sm" name="title" value={formData.title} onChange={handleChange} />
@@ -51,14 +55,14 @@ function AddStoryForm({ card, update, id, toggle }) {
         <Form.Control type="textarea" size="sm" name="notes" value={formData.notes} onChange={handleChange} />
       </Form.Group>
       <Form.Group controlId="Difficulty">
-          <Form.Label>Which mode?</Form.Label>
-          <Form.Control as="select" size="sm" name="mode" value={formData.mode} onChange={handleChange}>
-            <option>Normal</option>
-            <option>Hard</option>
-          </Form.Control>
-        </Form.Group>
+        <Form.Label>Which mode?</Form.Label>
+        <Form.Control as="select" size="sm" name="mode" value={formData.mode} onChange={handleChange}>
+          <option>Normal</option>
+          <option>Hard</option>
+        </Form.Control>
+      </Form.Group>
       <Button size='sm' onClick={handleSubmit}>Add Story</Button>
-      <Button size='sm' variant='outline-secondary' onClick={()=>toggle()}>Cancel</Button>
+      <Button size='sm' variant='secondary' onClick={() => toggle()}>Cancel</Button>
     </Form>
   )
 }

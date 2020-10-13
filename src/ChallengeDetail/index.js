@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Button, Form, Alert } from 'react-bootstrap';
 import AddStoryForm from '../AddStoryForm';
 import StoryInfo from '../StoryInfo';
+import './ChallengeDetail.scss';
 
 
 function ChallengeDetail({ card, update }) {
@@ -35,15 +36,20 @@ function ChallengeDetail({ card, update }) {
   }
 
   return (
-    <>
-      <h1>{card[id].title}</h1>
-      <div>{card[id].description}</div>
+    <div className="ChallengeDetail text-dark">
+      <div className="ChallengeDetailHeader">
+        <h1>{card[id].title}</h1>
+        <div>{card[id].description}</div>
+      </div>
       {showAlert ? <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
         You have successfully updated your progress on this challenge!
       </Alert> : null}
-      <Form onSubmit={handleSubmit}>
+      <Form className="ChallengeDetailForm" onSubmit={handleSubmit}>
+        <div className="FormHeader">
+          <h2>Update this bingo square</h2>
+        </div>
         <Form.Group controlId="Difficulty">
-          <Form.Label>Which mode?</Form.Label>
+          <Form.Label>Which mode is your book?</Form.Label>
           <Form.Control as="select" size="sm" name="difficulty" value={formData.difficulty} onChange={handleChange}>
             <option>Normal</option>
             <option>Hard</option>
@@ -59,17 +65,19 @@ function ChallengeDetail({ card, update }) {
         </Form.Group>
         <Button size='sm' onClick={handleSubmit}>Update Progress</Button>
       </Form>
+      <div className="ChallengeDetailTitles">
+        <h2>Your Choices for this Square</h2>
+        {card[id].stories.length
+          ? card[id].stories.map(story => <StoryInfo story={story} key={story.title} />)
+          : null}
 
-      {card[id].stories.length
-        ? card[id].stories.map(story => <StoryInfo story={story} key={story.title} />)
-        : <p>You haven't recorded a title for this challenge yet.</p>}
-
-      {showForm
-        ? <AddStoryForm card={card} update={update} id={id} toggle={toggleForm} />
-        : <Button size='sm' onClick={toggleForm}>Add a Book/Story</Button>}
+        {showForm
+          ? <AddStoryForm card={card} update={update} id={id} toggle={toggleForm} />
+          : <div>{!card[id].stories.length ?<p>You haven't recorded a title for this challenge yet.</p> : null}<Button size='sm' onClick={toggleForm}>Add a Book/Story</Button></div>}
+      </div>
 
       <Link to='/' className='btn btn-sm btn-secondary'>Back to Bingo Grid</Link>
-    </>
+    </div>
   )
 
 }

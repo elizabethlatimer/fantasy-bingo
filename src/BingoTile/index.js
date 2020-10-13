@@ -21,11 +21,11 @@ function BingoTile({ challenge, id }) {
   return (
     <Card
       bg={bgColor}
-      text="light"
+      text="dark"
       className="BingoTile">
       <Card.Body>
         <Card.Title className="BingoTitle">{challenge.title}</Card.Title>
-        <Card.Text className="BingoStatus">{`${challenge.status} ${mode === 'hard' && challenge.status !== "Not Started" ? ' - HARD MODE' : ''}`}</Card.Text>
+        <Card.Text className="BingoStatus">{`${challenge.status} ${mode === 'Hard' && challenge.status !== "Not Started" ? ' - HARD MODE' : ''}`}</Card.Text>
 
       </Card.Body>
       <Card.Footer>

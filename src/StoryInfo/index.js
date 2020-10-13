@@ -1,9 +1,10 @@
 import React from 'react';
 import {Card} from 'react-bootstrap';
+import './StoryInfo.scss';
 
 function StoryInfo ({story}) {
   return (
-    <Card>
+    <Card className="StoryInfoCard">
       <Card.Title>{story.title}</Card.Title>
       <Card.Text>Author: {story.author}</Card.Text>
       <Card.Text>Date Started: {story.startedDate}</Card.Text>
