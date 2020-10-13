@@ -11,12 +11,12 @@ function StoryInfo({ card, id, update, story, deleteStory }) {
 
   return (
     <Card className="StoryInfoCard">
-      <Card.Title>{story.title}</Card.Title>
-      <Card.Text>Author: {story.author}</Card.Text>
-      <Card.Text>Date Started: {story.startedDate}</Card.Text>
-      <Card.Text>Date Finished: {story.finishedDate}</Card.Text>
-      <Card.Text>My thoughts: {story.notes}</Card.Text>
-      <Card.Text>Mode: {story.mode}</Card.Text>
+      <Card.Title><span className="label">{story.title}</span></Card.Title>
+      <Card.Text><span className="label">Author:</span> {story.author}</Card.Text>
+      <Card.Text><span className="label">Date Started:</span> {story.startedDate}</Card.Text>
+      <Card.Text><span className="label">Date Finished:</span> {story.finishedDate}</Card.Text>
+      <Card.Text><span className="label">My thoughts:</span> {story.notes}</Card.Text>
+      <Card.Text><span className="label">Mode:</span> {story.mode}</Card.Text>
       <div className="buttons">
         <ButtonGroup>
           <Button size="sm" variant='secondary' onClick={() => setEdit(true)}>Edit</Button>
