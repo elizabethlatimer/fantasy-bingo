@@ -1,6 +1,11 @@
 .BingoTitle, .BingoStatus, .gridButton{
-    font-size: 1.7vw;
+
+    @media (min-width: 576px) {
+        font-size: 1.85vw;
+    }
 }
 .gridButton{
-    font-size: 1.1vw;
+    @media (min-width: 576px){
+        font-size: 1.3vw;
+    }
 }
