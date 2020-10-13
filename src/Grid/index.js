@@ -1,10 +1,18 @@
-import React from 'react';
-import BingoTile from '../BingoTile'
+import React, { useState } from 'react';
+import BingoTile from '../BingoTile';
+import WarningModal from '../WarningModal';
 import './Grid.scss';
 
-import { CardGroup } from 'react-bootstrap'
+import { CardGroup, Button } from 'react-bootstrap'
 
-function Grid({ card }) {
+function Grid({ card, reset }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleReset = () => {
+    reset();
+    setShowModal(false);
+  }
+
   return (
     <>
       <div className="BingoHeader text-dark">
@@ -16,12 +24,12 @@ function Grid({ card }) {
           </p>
         <h3>How to Use This Tracker</h3>
         <p>To get started, choose a challenge square and click to update your progress. There you will
-          be able to see the description of the challenge, update your progress, and keep track of what books or
-          stories you're using to complete that square.
+        be able to see the description of the challenge, update your progress, and keep track of what books or
+        stories you're using to complete that square.
         </p>
         <p>  This tracker utilizes the storage on your browser, so you'll want to access it from the
-          same computer each time. Make sure you aren't in incognito mode, because everything you enter will
-          disappear once you close the tab.
+        same computer each time. Make sure you aren't in incognito mode, because everything you enter will
+        disappear once you close the tab.
           </p>
 
       </div>
@@ -43,6 +51,16 @@ function Grid({ card }) {
           {Object.keys(card).filter(id => id > 20 && id <= 25).map(id => <BingoTile key={id} id={id} challenge={card[id]} />)}
         </CardGroup>
       </div>
+        <Button variant="info" onClick={() => setShowModal(true)}>
+          Reset Bingo Card</Button>
+
+        <WarningModal
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          title="Are you sure?"
+          message="This will permanently delete all saved progress and title details."
+          confirm={handleReset}
+        />
     </>
   )
 }
