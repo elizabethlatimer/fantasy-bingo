@@ -25,7 +25,7 @@ function AddStoryForm({ card, update, id, toggle, story }) {
     evt.preventDefault();
     let newCard = { ...card };
     newCard[id].stories[formData.title] = formData;
-    if (formData.title !== story.title) delete newCard[id].stories[story.title];
+    if (story && formData.title !== story.title) delete newCard[id].stories[story.title];
     update(newCard)
     toggle();
   }
