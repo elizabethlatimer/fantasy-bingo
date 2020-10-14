@@ -28,8 +28,7 @@ function Grid({ card, reset }) {
         stories you're using to complete that square.
         </p>
         <p>  This tracker utilizes the storage on your browser, so you'll want to access it from the
-        same computer each time. Make sure you aren't in incognito mode, because everything you enter will
-        disappear once you close the tab.
+        same device each time and make sure you aren't in incognito mode.
           </p>
 
       </div>
