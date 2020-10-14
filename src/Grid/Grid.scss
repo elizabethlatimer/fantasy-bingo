@@ -1,3 +1,5 @@
+@import "../shared/styles/styles.scss";
+
 .bingoGrid, .BingoHeader {
     font-family: 'Raleway', sans-serif;
     width:90%;
@@ -15,4 +17,9 @@
     p {
         margin-bottom: 5px;
     }
+}
+.BingoHeader {
+    background-color: $emphasis;
+    padding: 1rem;
+    border-radius: 3px;
 }

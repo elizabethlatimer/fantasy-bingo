@@ -1,5 +1,11 @@
-.BingoTitle, .BingoStatus, .gridButton{
-
+.BingoTile {
+    @media (min-width: 576px) {
+        margin: 1px;
+    }
+}
+.BingoTitle,
+.BingoStatus,
+.gridButton {
     @media (min-width: 576px) {
         font-size: 1.85vw;
     }
@@ -7,11 +13,14 @@
         font-size: 1rem;
     }
 }
-.gridButton{
-    @media (min-width: 576px){
+.BingoTitle {
+    font-weight: bold;
+}
+.gridButton {
+    @media (min-width: 576px) {
         font-size: 1.3vw;
     }
     @media (min-width: 1200px) {
-        font-size: .75rem;
+        font-size: 0.75rem;
     }
 }
