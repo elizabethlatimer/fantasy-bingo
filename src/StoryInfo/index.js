@@ -3,7 +3,7 @@ import { Card, Button, ButtonGroup } from 'react-bootstrap';
 import AddStoryForm from '../AddStoryForm';
 import './StoryInfo.scss';
 
-function StoryInfo({ card, id, update, story, deleteStory }) {
+function StoryInfo({ card, id, update, story, deleteStory, showModal }) {
   const [edit, setEdit] = useState(false);
   if (edit) {
     return (<div className="StoryInfoEdit">
@@ -13,6 +13,7 @@ function StoryInfo({ card, id, update, story, deleteStory }) {
       id={id}
       toggle={() => setEdit(false)}
       story={story}
+      openModal={showModal}
       />
       </div>)
   }
