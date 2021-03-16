@@ -1,4 +1,4 @@
-# Fantasy Binfo
+# Fantasy Bingo
 This project is a progress tracker for reddit's r/Fantasy bingo reading challenge. To learn more about the challenge visit https://www.reddit.com/r/Fantasy/comments/ft254j/official_rfantasy_2020_book_bingo_challenge/.
 
 This project is live at https://r-fantasy-bingo.netlify.app/
